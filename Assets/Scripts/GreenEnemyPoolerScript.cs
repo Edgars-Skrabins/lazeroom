@@ -19,7 +19,6 @@ public class GreenEnemyPoolerScript : MonoBehaviour
 
     void Start()
     {
-
         pooledObjectsGE = new List<GameObject>();
 
         PoolerGE = this;
@@ -33,7 +32,7 @@ public class GreenEnemyPoolerScript : MonoBehaviour
     }
 
     //A function that will return a GameObject
-    //Searches through all the GameObjects of the pool and if it isnt enabled it returns that object 
+    //Searches through all the GameObjects of the pool and if it isnt enabled it returns that object
     public GameObject GetPooledObjectGE()
     {
         for (int i = 0; i < pooledObjectsGE.Count; i++)

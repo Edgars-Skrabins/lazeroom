@@ -8,12 +8,12 @@ public class GreenBulletCollisionScript : MonoBehaviour
     {
         if (collision.CompareTag("GreenEnemy"))
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
             Instantiate(bulletEffect, transform.position, transform.rotation);
         }
         else if (collision.CompareTag("RedEnemy") || collision.CompareTag("BlueEnemy"))
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
             Instantiate(bulletEffect, transform.position, transform.rotation);
         }
     }

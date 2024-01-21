@@ -14,12 +14,11 @@ public class RedBulletPoolerScript : MonoBehaviour
     //For every object in this pool it instantiates it in the scene,deactivates it and adds it to the pooledObjects list
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    private void Start()
     {
-
         pooledObjectsRB = new List<GameObject>();
 
         PoolerRB = this;
@@ -33,7 +32,7 @@ public class RedBulletPoolerScript : MonoBehaviour
     }
 
     //A function that will return a GameObject
-    //Searches through all the GameObjects of the pool and if it isnt enabled it returns that object 
+    //Searches through all the GameObjects of the pool and if it isnt enabled it returns that object
     public GameObject GetPooledObjectRB()
     {
         for (int i = 0; i < pooledObjectsRB.Count; i++)
@@ -45,7 +44,7 @@ public class RedBulletPoolerScript : MonoBehaviour
         }
 
         //If the list is dynamic then everytime there arent enough objects in the pool to reuse it instantiates and adds one to the pool
-        if (WillGrowRB == true)
+        if (WillGrowRB)
         {
             GameObject obj = Instantiate(pooledObjectRB);
             pooledObjectsRB.Add(obj);

@@ -20,7 +20,7 @@ public class SpawnEasyWaveScript : MonoBehaviour
     private Vector3[] spawnPoints;
 
     public Wave[] wave;
-    private int nextWave = 0;
+    private int nextWave;
 
     public float timeBetweenWaves = 5f;
     public float waveCountdown;
@@ -53,7 +53,7 @@ public class SpawnEasyWaveScript : MonoBehaviour
         {
             if (RedEnemyAlive() == true || GreenEnemyAlive() == true || BlueEnemyAlive() == true)
             {
-                return; //Enemies are still alive so back out 
+                return; //Enemies are still alive so back out
             }
             else
             {
@@ -115,7 +115,7 @@ public class SpawnEasyWaveScript : MonoBehaviour
         return false;
 
     }
-    
+
         // ----- Function for spawning a wave -----
 
         IEnumerator SpawnWave(Wave _wave)
@@ -141,7 +141,7 @@ public class SpawnEasyWaveScript : MonoBehaviour
                     SpawnRedEnemy();
                 }
 
-                yield return new WaitForSeconds(spawnRate);   //Old 1f / spawnRate  
+                yield return new WaitForSeconds(spawnRate);   //Old 1f / spawnRate
             }
 
             state = SpawnState.WAITING;
@@ -201,5 +201,5 @@ public class SpawnEasyWaveScript : MonoBehaviour
         private void OnDisable()
         {
             StopAllCoroutines();
-        }   
+        }
 }

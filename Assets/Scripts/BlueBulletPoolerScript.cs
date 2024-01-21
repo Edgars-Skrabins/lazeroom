@@ -14,12 +14,11 @@ public class BlueBulletPoolerScript : MonoBehaviour
     //For every object in this pool it instantiates it in the scene,deactivates it and adds it to the pooledObjects list
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    private void Start()
     {
-
         pooledObjectsBB = new List<GameObject>();
 
         PoolerBB = this;
@@ -33,26 +32,23 @@ public class BlueBulletPoolerScript : MonoBehaviour
     }
 
     //A function that will return a GameObject
-    //Searches through all the GameObjects of the pool and if it isnt enabled it returns that object 
+    //Searches through all the GameObjects of the pool and if it isnt enabled it returns that object
     public GameObject GetPooledObjectBB()
     {
-        for (int i = 0; i < pooledObjectsBB.Count; i++)
+        foreach (GameObject t in pooledObjectsBB)
         {
-            if (!pooledObjectsBB[i].activeInHierarchy)
+            if (!t.activeInHierarchy)
             {
-                return pooledObjectsBB[i];
+                return t;
             }
         }
 
         //If the list is dynamic then everytime there arent enough objects in the pool to reuse it instantiates and adds one to the pool
-        if (WillGrowBB == true)
-        {
-            GameObject obj = Instantiate(pooledObjectBB);
-            pooledObjectsBB.Add(obj);
-            return obj;
-        }
+        if (!WillGrowBB) return null;
+        GameObject obj = Instantiate(pooledObjectBB);
+        pooledObjectsBB.Add(obj);
+        return obj;
 
         //If WillGrowRB is false and there isnt enough objects it returns null to not cause an error
-        return null;
     }
 }

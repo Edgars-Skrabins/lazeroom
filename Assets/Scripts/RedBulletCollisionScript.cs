@@ -8,12 +8,12 @@ public class RedBulletCollisionScript : MonoBehaviour
     {
         if (collision.CompareTag("RedEnemy"))
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
             Instantiate(bulletEffect, transform.position, transform.rotation);
         }
         else if (collision.CompareTag("GreenEnemy") || collision.CompareTag("BlueEnemy"))
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
             Instantiate(bulletEffect, transform.position, transform.rotation);
         }
     }
